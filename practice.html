@@ -1,0 +1,75 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Event Handling Example</title>
+  <style>
+    ul {
+      list-style-type: none;
+      padding: 0;
+    }
+    li {
+      padding: 10px;
+      background-color: #f4f4f4;
+      margin: 5px 0;
+      cursor: pointer;
+    }
+    a {
+      display: inline-block;
+      margin: 10px 0;
+      color: blue;
+    }
+  </style>
+</head>
+<body>
+  <h1>Event Handling Example</h1>
+
+  <ul>
+    <li>Item 1</li>
+    <li>Item 2</li>
+    <li>Item 3</li>
+  </ul>
+
+  <a href="https://example.com" id="myLink">Go to Example.com</a>
+
+  <script>
+    // Event handler property
+    document.querySelector("a").onclick = function(event) {
+      event.preventDefault(); // Prevent the default link behavior
+      alert("Link default action prevented!");
+    };
+
+    // Event delegation
+    document.querySelector("ul").addEventListener("click", function(event) {
+      if (event.target.tagName === "LI") {
+        alert(`You clicked on ${event.target.textContent}`);
+      }
+    });
+  </script>
+</body>
+</html> -->
+
+
+<form id="myForm">
+    <input type="email" id="email" required>
+    <span id="emailError"></span>
+    <button type="submit">Submit</button>
+  </form>
+  
+  <script>
+    const form = document.getElementById("myForm");
+    const email = document.getElementById("email");
+    const emailError = document.getElementById("emailError");
+  
+    form.addEventListener("submit", function(event) {
+      if (!email.validity.valid) {
+        if (email.validity.valueMissing) {
+          emailError.textContent = "Email is required!";
+        } else if (email.validity.typeMismatch) {
+          emailError.textContent = "Please enter a valid email address!";
+        }
+        event.preventDefault();
+      }
+    });
+  </script>
