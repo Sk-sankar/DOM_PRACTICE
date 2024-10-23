@@ -44,7 +44,7 @@
 
     <h1>Sign Up Form</h1>
 
-    <form id="signupForm" novalidate>
+    <form id="signupForm">
         <label for="email">Email:</label>
         <input type="email" id="email" required>
         <span id="emailError"></span>
@@ -59,46 +59,47 @@
 
         <button type="submit">Sign Up</button>
     </form>
+
+
     <script>
         const form = document.getElementById("signupForm");
-        const email = document.getElementById("email");
+        const email = docu.getElementById("email");
         const password = document.getElementById("password");
-        const confirmPassword = document.getElementById("confirmPassword");
+        const confirmPassword = docu.getElementById("confirmPassword");
         const emailError = document.getElementById("emailError");
         const passwordError = document.getElementById("passwordError");
         const confirmPasswordError = document.getElementById("confirmPasswordError");
 
-        form.addEventListener("submit",(event)=>{
-        emailError.textContent="";
-        passwordError.textContent="";
-        confirmPasswordError.textContent="";
-        if(!email.validity.valid){
-            if(email.validity.valueMissing){
-                emailError.textContent="email is required ";
 
-            }
-            else if(email.validity.typeMismatch){
-                emailError.textContent="give a correct email";
+        form.addEventListener("submit", (event) => {
+            emailError.textContent = "";
+            passwordError.textContent = "";
+            confirmPasswordError.textContent = "";
+            if (!email.validity.valid) {
+                if (email.validity.valueMissing) {
+                    emailError.textContent = "email is required ";
 
-            }
-            event.preventDefault();
-        }
-        if(!password.checkValidity()){
-            if(password.validity.valueMissing){
-                passwordError.textContent="password is requierd";
+                }
+                else if (email.validity.typeMismatch) {
+                    emailError.textContent = "give a correct email";
 
+                }
+                event.preventDefault();
             }
-            else if(password.validity.tooShort){
-                passwordError.textContent=`passwoerd too short${password.minLength}`;
+            if (!password.checkValidity()) {
+                if (password.validity.valueMissing) {
+                    passwordError.textContent = "password is requierd";
+
+                }
+                else if (password.validity.tooShort) {
+                    passwordError.textContent = `password is too short password must be${password.minlength}`;
+                }
+                event.preventDefault();
             }
-            event.preventDefault();
-        }
-        if(password.value!==confirmPassword.value){
-            confirmPasswordError.textContent="password do not match";
-            event.preventDefault();
-        }
+            if(password.value !== confirmPassword.value){
+                confirmPasswordError.textContent="password do not match";
+            }
         });
-
         password.addEventListener("input",()=>{
             passwordError.textContent="";
             if(password.validity.tooShort){
@@ -113,4 +114,9 @@
                confirmPasswordError.textContent="password do not match"
             }
         })
+
+   
     </script>
+</body>
+
+</html>
